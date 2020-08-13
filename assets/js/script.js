@@ -7,7 +7,7 @@ let ready = false;
 $.ajax({
     url: "https://covid19-us-api.herokuapp.com/county",
     method: "GET"
-}).then(function(response){
+}).then(function (response) {
     queryData = response;
     console.log(queryData);
     getReady();
@@ -21,12 +21,12 @@ function displayCounty(e) {
     console.log(countyName);
     const countyData = findCounty(countyName);
     console.log(countyData);
-    
+
     //display info
     const info = $("#info");
     info.empty();
     info.css("display", "block");
-    
+
     const name = $(`<h5>${countyData.county_name} County</h5>`);
     info.append(name);
     info.append($("<hr>"));
@@ -45,10 +45,10 @@ function findCounty(needle) {
             return item
         }
     }
-  };
+};
 
-  //remove loading gif when ajax query is returned
-  function getReady() {
+//remove loading gif when ajax query is returned
+function getReady() {
     ready = true;
     $("#loading").css("display", "none");
     $("path").on("click", displayCounty);
@@ -58,5 +58,14 @@ function findCounty(needle) {
     $("path").addClass("hover");
     $("polyline").addClass("hover");
     $("polygon").addClass("hover");
-    
-  }
+
+}
+
+
+
+    $(function () {
+        $("#accordion").accordion();
+  });
+
+
+
